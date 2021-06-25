@@ -1,6 +1,6 @@
 # BapApiSqlite
 ## Team 1
-* Gráinne
+* Gráinne Meyer
 ## Overview
 
 This is a simple Visual Studio API Project for the Belfast Met Microsoft Academy.
