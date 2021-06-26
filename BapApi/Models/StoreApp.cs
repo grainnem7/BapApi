@@ -25,7 +25,7 @@ namespace BapApi.Models
         [Column("name")]
         [Display(Name = "App Name")]
         [StringLength(100, MinimumLength = 3)]
-        [Required(ErrorMessage = "App name is required")]
+        [Required(ErrorMessage = "Name must be between 3 and 100 characters")]
         public string Name { get; set; }
 
         [Column("rating")]
@@ -51,7 +51,8 @@ namespace BapApi.Models
 
         [Column("price")]
         [Display(Name = "Price")]
-        [Required(ErrorMessage = "Price is required")]
+        [RegularExpression("^[0-9]*$")]
+        [Required(ErrorMessage = "Price should be a number")]
         public string Price { get; set; }
     }
 
