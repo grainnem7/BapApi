@@ -23,6 +23,7 @@ namespace BapApi.Controllers
 {
     [Authorize(Roles = "admin")]
     [ApiController]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")] 
     public class StoreAppsController : ControllerBase
     {
@@ -34,7 +35,7 @@ namespace BapApi.Controllers
         }
 
         /// <summary>
-        /// 
+        /// https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/conventions?view=aspnetcore-5.0
         /// The below HttpGet() gets all the data from the database using 
         /// the StoreAppsController above and since the whole controller is 
         /// restricted to eb accessed only by people with admin prrivilages 
@@ -44,6 +45,10 @@ namespace BapApi.Controllers
         /// <returns></returns>
 
         [AllowAnonymous]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreApps()
         {
@@ -58,6 +63,10 @@ namespace BapApi.Controllers
         /// <returns></returns>
 
         [AllowAnonymous]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("{id}")]
         public async Task<ActionResult<StoreAppDTO>> GetStoreApp(int id)
         {
