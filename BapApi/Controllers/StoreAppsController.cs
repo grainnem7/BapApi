@@ -1,6 +1,3 @@
-// https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio
-// https://entityframework.net/linq-queries
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +6,24 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BapApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
-namespace BapApi.Controllers
+/// <summary>
+/// The [ApiController] attribute enables a few features including attribute 
+/// routing requirement, automatic model validation and binding source parameter 
+/// inference.
+/// https://stackoverflow.com/questions/66545845/what-does-the-apicontroller-attribute-do
+/// https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio
+/// https://entityframework.net/linq-queries
+/// https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
+/// </summary>
+
+
+namespace BapApi.Controllers 
 {
-    [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     [ApiController]
+    [Route("api/[controller]")] 
     public class StoreAppsController : ControllerBase
     {
         private readonly StoreAppsContext _context;
@@ -23,16 +33,31 @@ namespace BapApi.Controllers
             _context = context;
         }
 
-        // GET: api/StoreApps (StoreApps as in StoreAppsController, line 17)
-        // Get all the data from the database
+        /// <summary>
+        /// 
+        /// The below HttpGet() gets all the data from the database using 
+        /// the StoreAppsController above and since the whole controller is 
+        /// restricted to eb accessed only by people with admin prrivilages 
+        /// the AllowAnonymous authorrization only allows a non admin user 
+        /// to get the data, but for everything else they need admin privilages
+        /// </summary>
+        /// <returns></returns>
+
+        [AllowAnonymous]
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreApps()
         {
             return await _context.StoreApps.Select(x => StoreAppToDTO(x)).ToListAsync();
         }
 
-        // GET: api/StoreApps/1
-        // Get a single row from the database by Id
+
+        /// <summary>
+        /// The below HttpGet("{id}") only allows to Get a single row from the database by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<StoreAppDTO>> GetStoreApp(int id)
         {
@@ -42,7 +67,6 @@ namespace BapApi.Controllers
             {
                 return NotFound();
             }
-
             return StoreAppToDTO(storeApp);
         }
 
@@ -69,16 +93,26 @@ namespace BapApi.Controllers
         // Delete a single row from the database by Id
 
         // DTO helper method. "Production apps typically limit the data that's input and returned using a subset of the model"
+
+        /// <summary>
+        /// Right now our web API exposes the database entities to the client. 
+        /// And the client receives data that maps directly to our database tables. 
+        /// However, that's not always a good idea thus the storeApp will defines how the 
+        /// data will be sent over the network.
+        /// https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5
+        /// </summary>
+        /// <param name="storeApp"></param>
+        /// <returns></returns>
         private static StoreAppDTO StoreAppToDTO(StoreApp storeApp) =>
             new StoreAppDTO
             {
-                Id = storeApp.Id,
-                Name = storeApp.Name,
-                Rating = storeApp.Rating,
-                People = storeApp.People,
-                Category = storeApp.Category,
-                Date = storeApp.Date,
-                Price = storeApp.Price
+                Id          = storeApp.Id,
+                Name        = storeApp.Name,
+                Rating      = storeApp.Rating,
+                People      = storeApp.People,
+                Category    = storeApp.Category,
+                Date        = storeApp.Date,
+                Price       = storeApp.Price
             };
     }
 
