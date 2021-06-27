@@ -46,6 +46,7 @@ namespace BapApi.Controllers
 
         [AllowAnonymous]
         [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -58,12 +59,16 @@ namespace BapApi.Controllers
 
         /// <summary>
         /// The below HttpGet("{id}") only allows to Get a single row from the database by Id
+        /// The [ProducesDefaultResponseType] comes in handy for non-success (200) return codes.
+        /// for example if a failure status code returns a model that describes the problem,
+        /// you can specify that the status code in that case produces something different than the success case. 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
 
         [AllowAnonymous]
         [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
