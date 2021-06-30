@@ -67,7 +67,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BapApi.Controllers 
 {
-    //[Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")] 
@@ -81,11 +81,10 @@ namespace BapApi.Controllers
         }
 
         /// <summary>
-        /// https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/conventions?view=aspnetcore-5.0
-        /// The below HttpGet() gets all the data from the database using 
-        /// the StoreAppsController above and since the whole controller is 
-        /// restricted to eb accessed only by people with admin prrivilages 
-        /// the AllowAnonymous authorrization only allows a non admin user 
+        ///
+        /// The below HttpGet() method gets all the data from the database using 
+        /// the StoreAppsController above, since the controller is restricted 
+        /// to only be accessed admin privilages the AllowAnonymous authorrization only allows a non admin user 
         /// to get the data, but for everything else they need admin privilages
         /// </summary>
         /// <returns></returns>
@@ -104,10 +103,32 @@ namespace BapApi.Controllers
 
 
         /// <summary>
-        /// The below HttpGet("{id}") only allows to Get a single row from the database by Id
+        /// [1] The below HttpGet("{id}") only allows to Get a single row from the database by Id
         /// The [ProducesDefaultResponseType] comes in handy for non-success (200) return codes.
-        /// for example if a failure status code returns a model that describes the problem,
-        /// you can specify that the status code in that case produces something different than the success case. 
+        /// for example if a failure status code returns a model that describes the problem
+        /// you can specify that the status code in that case produces the default response to 
+        /// to describe the errors collectively, not individually. “Default” means this response 
+        /// is used for all HTTP codes that are not covered individually for the operation. for more
+        /// information see the linbk below for more indepth 
+        /// https://github.com/dotnet/AspNetCore.Docs/issues/10072
+        /// https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/conventions?view=aspnetcore-5.0
+        /// https://docs.microsoft.com/en-us/aspnet/core/web-api/action-return-types?view=aspnetcore-2.2
+        /// 
+        /// [2]  It takes time for a function to fetch data from an API thus  asynchronous programming 
+        /// was devised to accommodate for the lag between when a function is called to when the value 
+        /// of that function is returned because without asynchronous programming, apps would delay 
+        /// loading on a clients screens in such a way that 
+        /// (a) a loading screen might appear: When a user signs in, waiting for all their user data 
+        /// to be returned from the database. This is bad User Experience (UX), waiting for the data to 
+        /// load at each new screen. 
+        /// (b) Thus Asynchronous programming allows a user to go about his business in an application,
+        /// while processes run in the background, good UX.
+        /// https://www.webtrainingroom.com/aspnetmvc/async-task 
+        /// 
+        /// [3]  The HttpGet() method gets all the data from the database using the StoreAppsController above,
+        /// since the controller is restricted to only be accessed admin privilages the AllowAnonymous 
+        /// authorization only allows a non admin user to get the data, but for everything else they need 
+        /// admin privilages. 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -122,7 +143,6 @@ namespace BapApi.Controllers
         public async Task<ActionResult<StoreAppDTO>> GetStoreApp(int id)
         {
             var storeApp = await _context.StoreApps.FindAsync(id);
-
             if (storeApp == null)
             {
                 return NotFound();
@@ -146,6 +166,7 @@ namespace BapApi.Controllers
             return storeTopTen; 
         }
 
+    
         // POST: api/StoreApps
         // Add a new record to the database
 
