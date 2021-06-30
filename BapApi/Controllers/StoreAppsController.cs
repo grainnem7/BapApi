@@ -9,6 +9,19 @@ using BapApi.Models;
 using Microsoft.AspNetCore.Authorization;
 
 /// <summary>
+///                                         README.txt
+///                                         Date: 30/06/2021
+///                                         
+/// Unit tests help to ensure functionality, and provide a means of verification for refactoring efforts.                                        
+/// You should make sure that this API is tested using TDD (Test-driven development) 
+/// as a developmental approach in which TFD (Test-First Development) is used through out
+/// and where you should write a test before writing a code for the production. 
+/// Look at the below articles on how to write unit tests for the Web API controller.
+/// https://www.c-sharpcorner.com/article/unit-testing-controllers-in-web-api/
+/// https://docs.microsoft.com/en-us/aspnet/web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
+/// 
+/// 
+/// 
 /// The [ApiController] attribute enables a few features including attribute 
 /// routing requirement, automatic model validation and binding source parameter 
 /// inference.
