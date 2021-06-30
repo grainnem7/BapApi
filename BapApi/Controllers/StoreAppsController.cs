@@ -74,20 +74,10 @@ namespace BapApi.Controllers
     public class StoreAppsController : ControllerBase
     {
         private readonly StoreAppsContext _context;
-
         public StoreAppsController(StoreAppsContext context)
         {
             _context = context;
         }
-
-        /// <summary>
-        ///
-        /// The below HttpGet() method gets all the data from the database using 
-        /// the StoreAppsController above, since the controller is restricted 
-        /// to only be accessed admin privilages the AllowAnonymous authorrization only allows a non admin user 
-        /// to get the data, but for everything else they need admin privilages
-        /// </summary>
-        /// <returns></returns>
 
         [AllowAnonymous]
         [ProducesDefaultResponseType]
@@ -100,7 +90,6 @@ namespace BapApi.Controllers
         {
             return await _context.StoreApps.Select(x => StoreAppToDTO(x)).ToListAsync();
         }
-
 
         /// <summary>
         /// [1] The below HttpGet("{id}") only allows to Get a single row from the database by Id
@@ -124,11 +113,31 @@ namespace BapApi.Controllers
         /// (b) Thus Asynchronous programming allows a user to go about his business in an application,
         /// while processes run in the background, good UX.
         /// https://www.webtrainingroom.com/aspnetmvc/async-task 
+        /// https://stackoverflow.com/questions/25720977/return-list-from-async-await-method
         /// 
         /// [3]  The HttpGet() method gets all the data from the database using the StoreAppsController above,
         /// since the controller is restricted to only be accessed admin privilages the AllowAnonymous 
         /// authorization only allows a non admin user to get the data, but for everything else they need 
         /// admin privilages. 
+        /// [3] The API calls are most often called by back-end code and you dont want to simply display the 
+        /// response from the API but instead we need to check the status code and parse the response to determine 
+        /// if our action was successful, displaying data to the user as necessary. An error page is not helpful
+        /// in this  situations as it will just bloats the response with HTML and makes client code difficult 
+        /// because the JSON (or XML) is expected, not HTML. 
+        /// 
+        /// Thus while we want to return information in a different format for Web API actions, the techniques for
+        /// handling errors are not so different from MVC. Thus instead of returning a View, we return JSON. 
+        /// For an API returning errors as empty response bodies is permissible (forgivable) for many invalid 
+        /// request types thus simply returning a 404 status code (with no response body) can provide a  client 
+        /// with enough information to fix their code. For more error handling in a web API see the following article
+        /// https://www.devtrends.co.uk/blog/handling-errors-in-asp.net-core-web-api
+        /// 
+        /// [4] Routing is very important to define in an API as its the path taken to reach the destination
+        /// Thus routing in a Web API is the mechanism to reach the destination. The destination is the exact 
+        /// action method which is to be invoked based on API's Request. For more information on web API routing 
+        /// see this link below 
+        /// https://dotnettutorials.net/lesson/routing-in-asp-net-core-web-api/
+        /// https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
