@@ -20,6 +20,19 @@ using Microsoft.AspNetCore.Authorization;
 /// https://www.c-sharpcorner.com/article/unit-testing-controllers-in-web-api/
 /// https://docs.microsoft.com/en-us/aspnet/web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 /// 
+/// Also think of Code coverage as is a measure of the amount of code that is run by unit tests
+/// either lines, branches, or methods for example, if you have an application with two branches 
+/// of code (branch X, and branch Y) a unit test will verify that branch "X" has a code coverage 
+/// of 50%. see the following code for more information.
+///  https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=windows
+/// 
+/// Remember that Code coverage is an important measure that quantifies the degree of which your 
+/// code has been thoroughly tested. There are plenty of Code Coverage Tools on the market but 
+/// below I've listed tools with the most popular features and latest download links, checkout below link
+/// https://blog.ndepend.com/guide-code-coverage-tools/
+///
+/// 
+/// 
 /// 
 /// 
 /// The [ApiController] attribute enables a few features including attribute 
