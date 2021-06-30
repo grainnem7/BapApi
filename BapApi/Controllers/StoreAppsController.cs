@@ -175,7 +175,7 @@ namespace BapApi.Controllers
             return storeTopTen; 
         }
 
-    
+
         // POST: api/StoreApps
         // Add a new record to the database
 
@@ -185,10 +185,26 @@ namespace BapApi.Controllers
         // DTO helper method. "Production apps typically limit the data that's input and returned using a subset of the model"
 
         /// <summary>
-        /// Right now our web API exposes the database entities to the client. 
+        /// [1] Right now our web API exposes the database entities to the client. 
         /// And the client receives data that maps directly to our database tables. 
-        /// However, that's not always a good idea thus the storeApp will defines how the 
-        /// data will be sent over the network.
+        /// However, that's not a good idea that such data is sent over the network like that.
+        /// 
+        /// Thus in programming a data transfer object DTO is an object that carries data 
+        /// between processes. The motivation for its use is that communication between 
+        /// processes is usually done resorting to remote interfaces (e.g. web services)
+        /// where each call is an expensive operation. 
+        /// 
+        /// Because the majority of the cost of each call is related to the round-trip time 
+        /// between the client and the server, one way of reducing the number of calls is to
+        /// use an object (the DTO) that aggregates the data that would have been transferred
+        /// by the several calls, but that is served by one call only. The difference between 
+        /// data transfer objects and business objects or data access objects is that a DTO 
+        /// does not have any behavior except for storage, retrieval, serialization and 
+        /// deserialization of its own data(mutators, accessors, parsers and serializers). 
+        /// In other words, DTOs are simple objects that should not contain any business logic
+        /// but may contain serialization and deserialization mechanisms for transferring data
+        /// over the wire. Forr more information look up the following links
+        /// https://en.wikipedia.org/wiki/Data_transfer_object
         /// https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5
         /// </summary>
         /// <param name="storeApp"></param>
