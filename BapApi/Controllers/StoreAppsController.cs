@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 ///                                         README.txt
 ///                                         Date: 30/06/2021
 ///                                         
-/// Unit tests help to ensure functionality, and provide a means of verification for refactoring efforts.                                        
+/// [1] Unit tests help to ensure functionality, and provide a means of verification for refactoring efforts.                                        
 /// You should make sure that this API is tested using TDD (Test-driven development) 
 /// as a developmental approach in which TFD (Test-First Development) is used through out
 /// and where you should write a test before writing a code for the production. 
@@ -20,7 +20,7 @@ using Microsoft.AspNetCore.Authorization;
 /// https://www.c-sharpcorner.com/article/unit-testing-controllers-in-web-api/
 /// https://docs.microsoft.com/en-us/aspnet/web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 /// 
-/// Also think of Code coverage as is a measure of the amount of code that is run by unit tests
+/// [2] Also think of Code coverage as is a measure of the amount of code that is run by unit tests
 /// either lines, branches, or methods for example, if you have an application with two branches 
 /// of code (branch X, and branch Y) a unit test will verify that branch "X" has a code coverage 
 /// of 50%. see the following code for more information.
@@ -31,23 +31,43 @@ using Microsoft.AspNetCore.Authorization;
 /// below I've listed tools with the most popular features and latest download links, checkout below link
 /// https://blog.ndepend.com/guide-code-coverage-tools/
 ///
+/// [3] Automation testing for the API is equally important and should be given the same weight of 
+/// importance as the unit tests and Code coverage mentioned above. Because with APIs increasingly 
+/// becoming important to developers, so its importantfor developers and programmers to automate their 
+/// API tests and know how to do it best. As it determs whether an API that has been developed meets 
+/// the anticipated threshold in terms of functionality, performance, reliability, and security. 
+/// Please look at the below link for your best automated API testing tools out there.
+/// https://rapidapi.com/blog/best-api-testing-tools/
 /// 
+/// [4] For performance reasons I've included the [ApiController] attribute to the controller class below 
+/// to enable the following opinionated, API-specific behaviors such as 
+/// Attribute routing requirement
+/// Automatic HTTP 400 responses
+/// Binding source parameter inference
+/// Multipart / form-data request inference
+/// These features require a compatibility version of 2.1 or later.
+/// https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-5.0#apicontroller-attribute
+///
 /// 
+/// [5] The Web API Service authentication and authorization is very important as the process should happen 
+/// in the host Server and we generally host the Web API Service as IIS. The IIS Server uses the HTTP modules 
+/// for checking the authentication of a user. So you can configure your project to use any of the built-in 
+/// authentication modules which are available in IIS or ASP.NET, or you can also create your own HTTP module 
+/// to perform custom authentication, in this API we used the built in IIS or ASP.NET.
+/// https://dotnettutorials.net/lesson/authentication-and-authorization-in-web-api/
 /// 
-/// 
-/// The [ApiController] attribute enables a few features including attribute 
-/// routing requirement, automatic model validation and binding source parameter 
-/// inference.
-/// https://stackoverflow.com/questions/66545845/what-does-the-apicontroller-attribute-do
-/// https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio
+/// [6] In this API try as much as possibel to use LINQ Queries as they are an expression that retrieves data 
+/// from a data source. Queries are usually expressed in a specialized query language, such as SQL for relational 
+/// databases and XQuery for XML.
+/// Language-Integrated Query (LINQ) offers a simpler, consistent model for working with data across various kinds
+/// of data sources and formats. And in LINQ query, you always work with programming objects.   
 /// https://entityframework.net/linq-queries
-/// https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
 /// </summary>
 
 
 namespace BapApi.Controllers 
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")] 
