@@ -96,7 +96,7 @@ namespace BapApi.Controllers
         /// The [ProducesDefaultResponseType] comes in handy for non-success (200) return codes.
         /// for example if a failure status code returns a model that describes the problem
         /// you can specify that the status code in that case produces the default response to 
-        /// to describe the errors collectively, not individually. “Default” means this response 
+        /// to describe the errors collectively, not individually. ï¿½Defaultï¿½ means this response 
         /// is used for all HTTP codes that are not covered individually for the operation. for more
         /// information see the linbk below for more indepth 
         /// https://github.com/dotnet/AspNetCore.Docs/issues/10072
@@ -161,6 +161,8 @@ namespace BapApi.Controllers
 
         // GET: api/StoreApps/FirstTen
         // Get the first ten results from the database aftering ordering the data by Id
+        
+        [AllowAnonymous]
         [HttpGet("FirstTen")]
         public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreTopTen()
         {
