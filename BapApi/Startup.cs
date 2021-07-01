@@ -52,8 +52,28 @@ namespace BapApi
         }
 
         /// <summary>
-        /// IApplicationBuilder Provides help configure and start web applications pages.
-        /// https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.hosting?view=aspnetcore-5.0
+        /// [1] API Documentations softwaares are great but the This is a common problem with
+        /// auto-generated docs or docs that are neglected by creators. Although many 
+        /// documentation generation tools are doing a great job at commenting on the code, 
+        /// they cannot replace actual explanations in English written by a developer or technical
+        /// writer.
+        /// 
+        /// Thus creating good docs is almost as important as building a good API. Because poorly
+        /// written docs or the ones that can’t be found by simply searching for “ X Product API” 
+        /// are failing the whole development effort. To creaate good API doc read the link below
+        /// https://www.altexsoft.com/blog/api-documentation/
+        /// 
+        /// [2] ASP.NET Core 2.x apps is the conspicuous use of endpoint routing. This was introduced in
+        /// 2.2, but could only be used for MVC controllers. In 3.0, endpoint routing is the preferred
+        /// approach, with the most basic setup provided in the ms docs template. Thus endpoint routing 
+        /// separates the process of selecting which "endpoint" will execute from the actual running of 
+        /// the endpoint such as an endpoint consists of a path pattern, and something to execute when
+        /// called.It could be an MVC action on a controller or it could be a simple lambda function.
+        /// 
+        /// The UseRouting() extension method is what looks at the incoming request and decides which 
+        /// endpoint should execute. Any middleware that appears after the UseRouting() call will know
+        /// which endpoint will run eventually.The UseEndpoints() call is responsible for configuring 
+        /// the endpoints, but also for executing them. To learn more please visit the link below.
         /// https://andrewlock.net/comparing-startup-between-the-asp-net-core-3-templates/
         /// </summary>
         /// <param name="app"></param>
