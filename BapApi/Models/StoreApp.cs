@@ -3,13 +3,27 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 
 /// <summary>
-/// We will validate our API model for security reasons because insertion data from the frontend will be saved in our database.
+/// [1] We will validate our API model for security reasons because insertion data from the frontend will be saved in our database.
 /// And to avoid causing a mess in our database we will validate the model object in our persistent storage. 
 /// For example, if there is a form in the frrontend application and the frrontend developer forgets to validate input fields,
 /// the result can affect the model validation stage. You may even implement input validation at the DB level too.
 /// https://www.c-sharpcorner.com/UploadFile/dacca2/model-validation-in-web-api/
-/// https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
-/// https://entityframework.net/database-generated#:~:text=Identity.%20When%20DatabaseGenerated.Identity%20applied%20to%20a%20property%2C%20the,by%20the%20database%20when%20the%20row%20is%20inserted.
+/// 
+/// [2] The DatabaseGenerated attribute specifies how values are generated for a property by the database. The attribute 
+/// takes a DatabaseGeneratedOption enumeration value, which can be one of three values: 
+/// Computed
+/// Identity
+/// None
+/// https://www.learnentityframeworkcore.com/configuration/data-annotation-attributes/databasegenerated-attribute
+/// 
+/// [3] A cache is a hardware or software component that stores data so that future requests for that data can be served faster; 
+/// the data stored in a cache might be the result of an earlier computation or a copy of data stored elsewhere. A cache hit 
+/// occurs when the requested data can be found in a cache, while a cache miss occurs when it cannot. Cache hits are served 
+/// by reading data from the cache, which is faster than recomputing a result or reading from a slower data store; thus,
+/// the more requests that can be served from the cache, the faster the system performs. to do cacheing please visit the links below
+/// https://en.wikipedia.org/wiki/Cache_(computing)
+/// https://medium.com/net-core/in-memory-distributed-redis-caching-in-asp-net-core-62fb33925818
+/// https://dottutorials.net/caching-asp-net-core-app-api-performance-boost/
 /// </summary>
 namespace BapApi.Models
 {
