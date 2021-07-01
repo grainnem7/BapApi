@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BapApi.Models;
-
+using BapApi.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace BapApi
 {
@@ -47,6 +49,17 @@ namespace BapApi
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<StoreAppsContext>();
+            services.AddHttpContextAccessor();
+            services.AddEntityFrameworkSqlite().AddDbContext<StoreAppsContext>();
+            services.AddSingleton<IUriService>(o =>
+            {
+                var accessor = o.GetRequiredService<IHttpContextAccessor>();
+                var request = accessor.HttpContext.Request;
+                var uri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
+                return new UriService(uri);
+            });
             services.AddEntityFrameworkSqlite().AddDbContext<StoreAppsContext>();
             services.AddControllers();
         }
