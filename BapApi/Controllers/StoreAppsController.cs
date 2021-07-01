@@ -159,10 +159,9 @@ namespace BapApi.Controllers
             return StoreAppToDTO(storeApp);
         }
 
-        // GET: api/StoreApps/FirstTen
+
+       // GET: api/StoreApps/FirstTen
         // Get the first ten results from the database aftering ordering the data by Id
-        
-        [AllowAnonymous]
         [HttpGet("FirstTen")]
         public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreTopTen()
         {
@@ -177,14 +176,11 @@ namespace BapApi.Controllers
             return storeTopTen; 
         }
 
-
         // POST: api/StoreApps
         // Add a new record to the database
 
         // Delete: api/StoreApps/1
         // Delete a single row from the database by Id
-
-        // DTO helper method. "Production apps typically limit the data that's input and returned using a subset of the model"
 
         /// <summary>
         /// [1] Right now our web API exposes the database entities to the client. 
