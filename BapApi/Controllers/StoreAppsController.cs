@@ -67,7 +67,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BapApi.Controllers 
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")] 
