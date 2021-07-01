@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BapApi.Models;
 using Microsoft.AspNetCore.Authorization;
+using BapApi.Wrappers;
 
 /// <summary>
 ///                                         README.txt
@@ -70,7 +71,7 @@ namespace BapApi.Controllers
     //[Authorize(Roles = "admin")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
-    [Route("api/[controller]")] 
+    [Route("api/[controller]")]
     public class StoreAppsController : ControllerBase
     {
         private readonly StoreAppsContext _context;
@@ -151,14 +152,21 @@ namespace BapApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<StoreAppDTO>> GetStoreApp(int id)
         {
-            var storeApp = await _context.StoreApps.FindAsync(id);
-            if (storeApp == null)
-            {
-                return NotFound();
-            }
-            return StoreAppToDTO(storeApp);
-        }
+            var storeApp = await _context.StoreApps.Where(a => a.Id == id).FirstOrDefaultAsync();
+            return Ok(new Response<StoreApp>(storeApp));
 
+        }
+       
+        //{
+            //var storeApp = await _context.StoreApps.FindAsync(id);
+           // if (storeApp == null)
+          //  {
+               // return NotFound();
+           // }
+       // }
+       
+
+        
 
        // GET: api/StoreApps/FirstTen
         // Get the first ten results from the database aftering ordering the data by Id
@@ -207,6 +215,10 @@ namespace BapApi.Controllers
         /// </summary>
         /// <param name="storeApp"></param>
         /// <returns></returns>
+        /// 
+
+    
+
         private static StoreAppDTO StoreAppToDTO(StoreApp storeApp) =>
             new StoreAppDTO
             {

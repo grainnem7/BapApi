@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BapApi"
+    "\\BapApi",
+    "\\BapApi\\Controllers"
   ],
-  "SelectedNode": "\\publish",
+  "SelectedNode": "\\BapApi",
   "PreviewInSolutionExplorer": false
 }
