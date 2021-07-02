@@ -1,3 +1,4 @@
 {
-    "appService.deploySubpath": "publish"
+    "appService.deploySubpath": "publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/a4e413a9-b75a-4c89-a61c-7a45cf0f32f6/resourceGroups/web-apps/providers/Microsoft.Web/sites/bapTeam01API"
 }
