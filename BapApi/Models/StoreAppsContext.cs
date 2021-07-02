@@ -6,6 +6,12 @@ namespace BapApi.Models
     {
         public DbSet<StoreApp> StoreApps { get; set; }
 
+
+        public StoreAppsContext(DbContextOptions<StoreAppsContext> options) : base(options)
+        {
+
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite(@"Data Source=storeapps.db");
     }

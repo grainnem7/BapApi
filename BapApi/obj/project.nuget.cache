@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DcJYG1JikApkAHbXPbddGY2cX+8pdSJf1M9fOU6vpQXNeXUWgwwV5gwk2oNYMg8K2Kxsnp6cYFa5Bq7KSF+wsg==",
+  "dgSpecHash": "2AF7f+HkC2GoCtfBK76F0JQ1Wlqr0GJccqiID1DbDtpaEnr0JoPRKaFHZxAt5KWCuNj+TwFsubOwGWMmRg3LoA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kelvi\\Desktop\\bapteam01\\BapApi\\BapApi\\BapApi.csproj",
   "expectedPackageFiles": [
@@ -21,11 +21,11 @@
     "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
     "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.6\\microsoft.data.sqlite.core.5.0.6.nupkg.sha512",
     "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
-    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.6\\microsoft.entityframeworkcore.5.0.6.nupkg.sha512",
-    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.6\\microsoft.entityframeworkcore.abstractions.5.0.6.nupkg.sha512",
-    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.6\\microsoft.entityframeworkcore.analyzers.5.0.6.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.7\\microsoft.entityframeworkcore.5.0.7.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.7\\microsoft.entityframeworkcore.abstractions.5.0.7.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.7\\microsoft.entityframeworkcore.analyzers.5.0.7.nupkg.sha512",
     "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.6\\microsoft.entityframeworkcore.design.5.0.6.nupkg.sha512",
-    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\5.0.6\\microsoft.entityframeworkcore.inmemory.5.0.6.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\5.0.7\\microsoft.entityframeworkcore.inmemory.5.0.7.nupkg.sha512",
     "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.6\\microsoft.entityframeworkcore.relational.5.0.6.nupkg.sha512",
     "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\5.0.6\\microsoft.entityframeworkcore.sqlite.5.0.6.nupkg.sha512",
     "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\5.0.6\\microsoft.entityframeworkcore.sqlite.core.5.0.6.nupkg.sha512",

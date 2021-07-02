@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BapApi.Models;
 using Microsoft.AspNetCore.Authorization;
+using BapApi.Wrappers;
+using BapApi.Filters;
+using BapApi.Services;
+using BapApi.Helpers;
 
 /// <summary>
 ///                                         README.txt
@@ -70,14 +74,25 @@ namespace BapApi.Controllers
     //[Authorize(Roles = "admin")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
-    [Route("api/[controller]")] 
+    [Route("api/[controller]")]
     public class StoreAppsController : ControllerBase
     {
+        //private readonly StoreAppsContext _context;
+        // public StoreAppsController(StoreAppsContext context)
+        // {
+        //    _context = context;
+        //}
+
         private readonly StoreAppsContext _context;
-        public StoreAppsController(StoreAppsContext context)
+        private readonly IUriService uriService;
+        public StoreAppsController(StoreAppsContext context, IUriService uriService)
         {
             _context = context;
+            this.uriService = uriService;
         }
+
+
+
 
         [AllowAnonymous]
         [ProducesDefaultResponseType]
@@ -85,11 +100,30 @@ namespace BapApi.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+
+       
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreApps()
-        {
+         {
             return await _context.StoreApps.Select(x => StoreAppToDTO(x)).ToListAsync();
+         }
+
+        [HttpGet("Paged")]
+        // Read the query string on the request page filter properties
+        public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter)
+        {
+            var route = Request.Path.Value;
+            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+            var pagedData = await _context.StoreApps
+                .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
+                .Take(validFilter.PageSize)
+                .ToListAsync();
+            var totalRecords = await _context.StoreApps.CountAsync();
+            var pagedReponse = PaginationHelper.CreatePagedReponse<StoreApp>(pagedData, validFilter, totalRecords, uriService, route);
+            return Ok(pagedReponse);
         }
+
 
         /// <summary>
         /// [1] The below HttpGet("{id}") only allows to Get a single row from the database by Id
@@ -142,8 +176,8 @@ namespace BapApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
 
-        [AllowAnonymous]
-        [ProducesDefaultResponseType]
+        //[AllowAnonymous]
+        //[ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -151,14 +185,22 @@ namespace BapApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<StoreAppDTO>> GetStoreApp(int id)
         {
-            var storeApp = await _context.StoreApps.FindAsync(id);
-            if (storeApp == null)
-            {
-                return NotFound();
-            }
-            return StoreAppToDTO(storeApp);
-        }
+            //neater error message display
+            var storeApp = await _context.StoreApps.Where(a => a.Id == id).FirstOrDefaultAsync();
+            return Ok(new Response<StoreApp>(storeApp));
 
+        }
+        //original code - to be deleted?
+        //{
+            //var storeApp = await _context.StoreApps.FindAsync(id);
+           // if (storeApp == null)
+          //  {
+               // return NotFound();
+           // }
+       // }
+       
+
+  
 
        // GET: api/StoreApps/FirstTen
         // Get the first ten results from the database aftering ordering the data by Id
@@ -207,6 +249,9 @@ namespace BapApi.Controllers
         /// </summary>
         /// <param name="storeApp"></param>
         /// <returns></returns>
+        /// 
+
+
         private static StoreAppDTO StoreAppToDTO(StoreApp storeApp) =>
             new StoreAppDTO
             {
