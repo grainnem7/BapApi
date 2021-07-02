@@ -102,14 +102,14 @@ namespace BapApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
 
-        //commented out for now - to be deleted? Has been reworked to include pagination
-        //[HttpGet()]
-        // public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreApps()
-        // {
-        //    return await _context.StoreApps.Select(x => StoreAppToDTO(x)).ToListAsync();
-        // }
+       
+        [HttpGet()]
+        public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreApps()
+         {
+            return await _context.StoreApps.Select(x => StoreAppToDTO(x)).ToListAsync();
+         }
 
-        [HttpGet]
+        [HttpGet("Paged")]
         // Read the query string on the request page filter properties
         public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter)
         {
