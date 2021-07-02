@@ -2,6 +2,8 @@
 ## Team 1
 * Gráinne Meyer
 * Caitlin O'Hara
+* Shannon McGuckin
+* Kelvin	Mbewe
 ## Overview
 
 This is a simple Visual Studio API Project for the Belfast Met Microsoft Academy.

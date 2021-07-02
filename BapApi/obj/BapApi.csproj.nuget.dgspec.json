@@ -1,27 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kelvi\\Desktop\\bapteam01\\BapApi\\BapApi\\BapApi.csproj": {}
+    "C:\\Users\\ruper\\source\\repos\\bapteam01\\BapApi\\BapApi\\BapApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kelvi\\Desktop\\bapteam01\\BapApi\\BapApi\\BapApi.csproj": {
+    "C:\\Users\\ruper\\source\\repos\\bapteam01\\BapApi\\BapApi\\BapApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kelvi\\Desktop\\bapteam01\\BapApi\\BapApi\\BapApi.csproj",
+        "projectUniqueName": "C:\\Users\\ruper\\source\\repos\\bapteam01\\BapApi\\BapApi\\BapApi.csproj",
         "projectName": "BapApi",
-        "projectPath": "C:\\Users\\kelvi\\Desktop\\bapteam01\\BapApi\\BapApi\\BapApi.csproj",
-        "packagesPath": "C:\\Users\\kelvi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kelvi\\Desktop\\bapteam01\\BapApi\\BapApi\\obj\\",
+        "projectPath": "C:\\Users\\ruper\\source\\repos\\bapteam01\\BapApi\\BapApi\\BapApi.csproj",
+        "packagesPath": "C:\\Users\\ruper\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ruper\\source\\repos\\bapteam01\\BapApi\\BapApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\kelvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ruper\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
