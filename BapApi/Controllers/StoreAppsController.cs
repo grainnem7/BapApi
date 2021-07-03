@@ -203,8 +203,10 @@ namespace BapApi.Controllers
         [HttpGet("Search")]
         public async Task<ActionResult<StoreAppDTO>> GetSearchApp(string SearchTerm)
         {
+
+            var lowerCaseSearchTerm = SearchTerm.Trim().ToLower();
             
-            var searchApp = await _context.StoreApps.Where(a => a.Name.Contains(SearchTerm)).Take(100).ToListAsync();
+            var searchApp = await _context.StoreApps.Where(a => a.Name.ToLower().Contains(lowerCaseSearchTerm)).Take(100).ToListAsync();
 
             if (searchApp == null)
             {
