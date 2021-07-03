@@ -199,6 +199,34 @@ namespace BapApi.Controllers
            // }
        // }
        
+        //var storeApp = await _context.StoreApps.FindAsync(id);
+        // if (storeApp == null)
+        //  {
+        // return NotFound();
+        // }
+        // }
+
+
+        [HttpGet("Search")]
+        public async Task<ActionResult<StoreAppDTO>> GetSearchApp(string SearchTerm)
+        {
+
+            var lowerCaseSearchTerm = SearchTerm.Trim().ToLower();
+            
+            var searchApp = await _context.StoreApps
+                .Where(a => a.Name.ToLower()
+                .Contains(lowerCaseSearchTerm) || a.Category.ToLower().Contains(lowerCaseSearchTerm)).ToListAsync();
+            
+            
+            if (searchApp == null)
+            {
+                return NotFound();
+            }
+
+
+            return Ok(searchApp);
+
+        }
 
   
 
