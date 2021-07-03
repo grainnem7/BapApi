@@ -208,8 +208,7 @@ namespace BapApi.Controllers
             
             var searchApp = await _context.StoreApps
                 .Where(a => a.Name.ToLower()
-                .Contains(lowerCaseSearchTerm) || a.Category.ToLower().Contains(lowerCaseSearchTerm))
-                .Take(100).ToListAsync();
+                .Contains(lowerCaseSearchTerm) || a.Category.ToLower().Contains(lowerCaseSearchTerm)).ToListAsync();
             
             
             if (searchApp == null)
