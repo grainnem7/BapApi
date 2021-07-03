@@ -11,7 +11,6 @@ using BapApi.Wrappers;
 using BapApi.Filters;
 using BapApi.Services;
 using BapApi.Helpers;
-using System.Net.Http;
 
 /// <summary>
 ///                                         README.txt
@@ -219,9 +218,40 @@ namespace BapApi.Controllers
             return storeTopTen; 
         }
 
+        /// <summary>
+        /// create a post request, allows the user to input a new add that will be saved to the database 
+        /// </summary>
+        /// <param name="storeApp"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult<StoreAppDTO>> CreateApp(StoreAppDTO storeApp)
+        {
+            var storeapp = new StoreApp
+            {
+                
+                Id = storeApp.Id,
+                Name = storeApp.Name,
+                Rating = storeApp.Rating,
+                People = storeApp.People,
+                Category = storeApp.Category,
+                Date = storeApp.Date,
+                Price = storeApp.Price
+            };
+
+            _context.StoreApps.Add(storeapp);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(
+                nameof(storeApp),
+                new { id = storeapp.Id },
+                StoreAppToDTO(storeapp));
+        }
+
+
         // POST: api/StoreApps
         // Add a new record to the database
-      
+
+
 
 
         // Delete: api/StoreApps/1
