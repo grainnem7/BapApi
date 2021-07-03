@@ -192,17 +192,32 @@ namespace BapApi.Controllers
         }
         //original code - to be deleted?
         //{
-            //var storeApp = await _context.StoreApps.FindAsync(id);
-           // if (storeApp == null)
-          //  {
-               // return NotFound();
-           // }
-       // }
-       
+        //var storeApp = await _context.StoreApps.FindAsync(id);
+        // if (storeApp == null)
+        //  {
+        // return NotFound();
+        // }
+        // }
 
-  
 
-       // GET: api/StoreApps/FirstTen
+        [HttpGet("Search")]
+        public async Task<ActionResult<StoreAppDTO>> GetSearchApp(string SearchTerm)
+        {
+            
+            var searchApp = await _context.StoreApps.Where(a => a.Name.Contains(SearchTerm)).Take(100).ToListAsync();
+
+            if (searchApp == null)
+            {
+                return NotFound();
+            }
+
+
+            return Ok(searchApp);
+
+        }
+
+
+        // GET: api/StoreApps/FirstTen
         // Get the first ten results from the database aftering ordering the data by Id
         [HttpGet("FirstTen")]
         public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreTopTen()
