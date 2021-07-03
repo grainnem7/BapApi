@@ -206,8 +206,12 @@ namespace BapApi.Controllers
 
             var lowerCaseSearchTerm = SearchTerm.Trim().ToLower();
             
-            var searchApp = await _context.StoreApps.Where(a => a.Name.ToLower().Contains(lowerCaseSearchTerm)).Take(100).ToListAsync();
-
+            var searchApp = await _context.StoreApps
+                .Where(a => a.Name.ToLower()
+                .Contains(lowerCaseSearchTerm) || a.Category.ToLower().Contains(lowerCaseSearchTerm))
+                .Take(100).ToListAsync();
+            
+            
             if (searchApp == null)
             {
                 return NotFound();
