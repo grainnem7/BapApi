@@ -8,9 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using BapApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using BapApi.Wrappers;
-using BapApi.Filters;
-using BapApi.Services;
-using BapApi.Helpers;
 
 /// <summary>
 ///                                         README.txt
@@ -78,19 +75,12 @@ namespace BapApi.Controllers
     [ApiController]
     public class StoreAppsController : ControllerBase
     {
-        //private readonly StoreAppsContext _context;
-        // public StoreAppsController(StoreAppsContext context)
-        // {
-        //    _context = context;
-        //}
-
-        private  StoreAppsContext _context; //readonly
-        //private  IUriService uriService;    //readonly
-        public StoreAppsController(StoreAppsContext context, IUriService uriService)
+        private readonly StoreAppsContext _context;
+        public StoreAppsController(StoreAppsContext context)
         {
             _context = context;
-            //this.uriService = uriService;
         }
+
 
 
 
@@ -103,27 +93,27 @@ namespace BapApi.Controllers
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
 
 
-       
+
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreApps()
          {
             return await _context.StoreApps.Select(x => StoreAppToDTO(x)).ToListAsync();
          }
 
-        [HttpGet("Paged")]
-        // Read the query string on the request page filter properties
-        public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter)
-        {
-            var route = Request.Path.Value;
-            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
-            var pagedData = await _context.StoreApps
-                .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
-                .Take(validFilter.PageSize)
-                .ToListAsync();
-            var totalRecords = await _context.StoreApps.CountAsync();
-            var pagedReponse = PaginationHelper.CreatePagedReponse<StoreApp>(pagedData, validFilter, totalRecords, uriService, route);
-            return Ok(pagedReponse);
-        }
+        //[HttpGet("Paged")]
+        //// Read the query string on the request page filter properties
+        //public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter)
+        //{
+        //    var route = Request.Path.Value;
+        //    var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+        //    var pagedData = await _context.StoreApps
+        //        .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
+        //        .Take(validFilter.PageSize)
+        //        .ToListAsync();
+        //    var totalRecords = await _context.StoreApps.CountAsync();
+        //    var pagedReponse = PaginationHelper.CreatePagedReponse<StoreApp>(pagedData, validFilter, totalRecords, uriService, route);
+        //    return Ok(pagedReponse);
+        //}
 
 
         /// <summary>

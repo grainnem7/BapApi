@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BapApi.Models;
-using BapApi.Services;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
@@ -51,7 +51,7 @@ namespace BapApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<StoreAppsContext>(opt => opt.UseInMemoryDatabase("StoreApps"));
+            //services.AddDbContext<StoreAppsContext>(opt => opt.UseInMemoryDatabase("StoreApps"));
             //  services.AddHttpContextAccessor();
             services.AddEntityFrameworkSqlite().AddDbContext<StoreAppsContext>();
             services.AddControllers();
