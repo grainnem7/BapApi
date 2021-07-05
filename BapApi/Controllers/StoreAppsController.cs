@@ -72,9 +72,10 @@ using BapApi.Helpers;
 namespace BapApi.Controllers 
 {
     //[Authorize(Roles = "admin")]
-    [ApiController]
+    
    // [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")]
+    [ApiController]
     public class StoreAppsController : ControllerBase
     {
         //private readonly StoreAppsContext _context;
