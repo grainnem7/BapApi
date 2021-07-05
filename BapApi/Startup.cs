@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BapApi
 {
+    //testing commits
     public class Startup
     {
         public Startup(IConfiguration configuration)
