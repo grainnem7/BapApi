@@ -85,11 +85,11 @@ namespace BapApi.Controllers
         //}
 
         private  StoreAppsContext _context; //readonly
-        private  IUriService uriService;    //readonly
+        //private  IUriService uriService;    //readonly
         public StoreAppsController(StoreAppsContext context, IUriService uriService)
         {
             _context = context;
-            this.uriService = uriService;
+            //this.uriService = uriService;
         }
 
 
