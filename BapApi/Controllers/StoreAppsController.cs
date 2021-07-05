@@ -73,7 +73,7 @@ namespace BapApi.Controllers
 {
     //[Authorize(Roles = "admin")]
     [ApiController]
-    [ApiConventionType(typeof(DefaultApiConventions))]
+   // [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")]
     public class StoreAppsController : ControllerBase
     {
@@ -83,8 +83,8 @@ namespace BapApi.Controllers
         //    _context = context;
         //}
 
-        private readonly StoreAppsContext _context;
-        private readonly IUriService uriService;
+        private  StoreAppsContext _context; //readonly
+        private  IUriService uriService;    //readonly
         public StoreAppsController(StoreAppsContext context, IUriService uriService)
         {
             _context = context;

@@ -51,7 +51,7 @@ namespace BapApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<StoreAppsContext>();
+            services.AddDbContext<StoreAppsContext>(opt => opt.UseInMemoryDatabase("StoreApps"));
             services.AddHttpContextAccessor();
             services.AddEntityFrameworkSqlite().AddDbContext<StoreAppsContext>();
             services.AddSingleton<IUriService>(o =>
