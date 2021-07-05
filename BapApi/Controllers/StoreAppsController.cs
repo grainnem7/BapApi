@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BapApi.Models;
 using Microsoft.AspNetCore.Authorization;
-using BapApi.Wrappers;
+
 
 /// <summary>
 ///                                         README.txt
@@ -174,28 +174,19 @@ namespace BapApi.Controllers
         //[ProducesResponseType(StatusCodes.Status404NotFound)]
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("{id}")]
+        
         public async Task<ActionResult<StoreAppDTO>> GetStoreApp(int id)
         {
-            //neater error message display
-            var storeApp = await _context.StoreApps.Where(a => a.Id == id).FirstOrDefaultAsync();
-            return Ok(new Response<StoreApp>(storeApp));
+            var storeApp = await _context.StoreApps.FindAsync(id);
 
+            if (storeApp == null)
+            {
+                return NotFound();
+            }
+
+            return StoreAppToDTO(storeApp);
         }
-        //original code - to be deleted?
-        //{
-            //var storeApp = await _context.StoreApps.FindAsync(id);
-           // if (storeApp == null)
-          //  {
-               // return NotFound();
-           // }
-       // }
        
-        //var storeApp = await _context.StoreApps.FindAsync(id);
-        // if (storeApp == null)
-        //  {
-        // return NotFound();
-        // }
-        // }
 
 
         [HttpGet("Search")]
