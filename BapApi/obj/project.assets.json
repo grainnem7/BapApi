@@ -7679,25 +7679,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kelvi\\.nuget\\packages\\": {},
+    "C:\\Users\\grain\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kelvi\\Desktop\\bapteam01\\bapapi2\\BapApi\\BapApi.csproj",
+      "projectUniqueName": "C:\\Users\\grain\\OneDrive\\Desktop\\BapTeam01\\BapApi\\BapApi\\BapApi.csproj",
       "projectName": "BapApi",
-      "projectPath": "C:\\Users\\kelvi\\Desktop\\bapteam01\\bapapi2\\BapApi\\BapApi.csproj",
-      "packagesPath": "C:\\Users\\kelvi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kelvi\\Desktop\\bapteam01\\bapapi2\\BapApi\\obj\\",
+      "projectPath": "C:\\Users\\grain\\OneDrive\\Desktop\\BapTeam01\\BapApi\\BapApi\\BapApi.csproj",
+      "packagesPath": "C:\\Users\\grain\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\grain\\OneDrive\\Desktop\\BapTeam01\\BapApi\\BapApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\kelvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\grain\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -7770,7 +7770,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
