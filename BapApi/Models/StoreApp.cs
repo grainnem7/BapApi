@@ -27,46 +27,57 @@ using System.ComponentModel.DataAnnotations.Schema;
 /// </summary>
 namespace BapApi.Models
 {
+    //public class StoreApp
+    //{
+    //    [Column("id")]
+    //    [Display(Name = "App ID")]
+    //    [Key]
+    //    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    //    [Required(ErrorMessage = "ID is required")]
+    //    public int Id { get; set; }
+
+    //    [Column("name")]
+    //    [Display(Name = "App Name")]
+    //    [StringLength(100, MinimumLength = 3)]
+    //    [Required(ErrorMessage = "Name must be between 3 and 100 characters")]
+    //    public string Name { get; set; }
+
+    //    [Column("rating")]
+    //    [Display(Name = "Rating")]
+    //    [StringLength(5)]
+    //    [RegularExpression("^[0-9]*$")]
+    //    public double Rating { get; set; }
+
+    //    [Column("people")]
+    //    [Display(Name = "Number of People Downloaded")]
+    //    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    //    public int People { get; set; }
+
+    //    [Column("category")]
+    //    [Display(Name = "Category")]
+    //    [Required(ErrorMessage = "Category is required")]
+    //    public string Category { get; set; }
+
+    //    [Column("date")]
+    //    [Display(Name = "Date")]
+    //    [Required(ErrorMessage = "Date is required")]
+    //    public string Date { get; set; }
+
+    //    [Column("price")]
+    //    [Display(Name = "Price")]
+    //    [RegularExpression("^[0-9]*$")]
+    //    [Required(ErrorMessage = "Price should be a number")]
+    //    public string Price { get; set; }
+    //}
+
     public class StoreApp
     {
-        [Column("id")]
-        [Display(Name = "App ID")]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required(ErrorMessage = "ID is required")]
         public int Id { get; set; }
-
-        [Column("name")]
-        [Display(Name = "App Name")]
-        [StringLength(100, MinimumLength = 3)]
-        [Required(ErrorMessage = "Name must be between 3 and 100 characters")]
         public string Name { get; set; }
-
-        [Column("rating")]
-        [Display(Name = "Rating")]
-        [StringLength(5)]
-        [RegularExpression("^[0-9]*$")]
         public double Rating { get; set; }
-
-        [Column("people")]
-        [Display(Name = "Number of People Downloaded")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int People { get; set; }
-
-        [Column("category")]
-        [Display(Name = "Category")]
-        [Required(ErrorMessage = "Category is required")]
+        public string People { get; set; }
         public string Category { get; set; }
-
-        [Column("date")]
-        [Display(Name = "Date")]
-        [Required(ErrorMessage = "Date is required")]
         public string Date { get; set; }
-
-        [Column("price")]
-        [Display(Name = "Price")]
-        [RegularExpression("^[0-9]*$")]
-        [Required(ErrorMessage = "Price should be a number")]
         public string Price { get; set; }
     }
 
