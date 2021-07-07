@@ -193,6 +193,8 @@ namespace BapApi.Controllers
         public async Task<ActionResult<StoreAppDTO>> GetSearchApp(string SearchTerm)
         {
 
+            // .Trim to make sure that the search term string can take multiple words
+            // .ToLower to make sure that the search term is not case sensitive
             var lowerCaseSearchTerm = SearchTerm.Trim().ToLower();
             
             var searchApp = await _context.StoreApps
