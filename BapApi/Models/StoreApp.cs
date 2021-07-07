@@ -53,8 +53,12 @@ namespace BapApi.Models
         [RegularExpression("^[0-9]*$")]
         public double   Rating  { get; set; }
 
-
+        [Column("people")]
+        [Display(Name = "Number of People Downloaded")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int      People  { get; set; }
+
+
         public string   Category{ get; set; }
         public string   Date    { get; set; }
         public string   Price   { get; set; }
