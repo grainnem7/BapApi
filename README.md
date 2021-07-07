@@ -1,7 +1,10 @@
 
-# BAP API
-## Team 1
-## Kelvin Mbewe,Gráinne Meyer,  Caitlin O'Hara, Shannon McGuckin
+# BAP API - Team 1
+* Kelvin Mbewe
+* Gráinne Meyer
+* Caitlin O'Hara
+* Shannon McGuckin
+
 #### Technologies Used
 ####  C#, Microsoft.EntityFrameworkCore, Sqlite3 Database
 #### Get Started
