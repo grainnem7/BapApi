@@ -215,6 +215,14 @@ namespace BapApi.Controllers
         /// 
         /// https://treehozz.com/what-is-createdataction
         /// https://entityframeworkcore.com/saving-data-savechangesasync
+        /// 
+        /// [4] Many languages, particularly scripting languages, have a loosely 
+        /// typed variable type named var. In these languages, var can 
+        /// hold any type of data. If you place a number into a var then
+        /// it will be interpreted as a number whenever possible. If you 
+        /// enter text it will be interpreted as a string, etc. ‘var’s 
+        /// can even hold various objects and will behave properly.
+        /// https://intellitect.com/when-to-use-and-not-use-var-in-c/
         /// </summary>
         /// <param name="storeApp"></param>
         /// <returns></returns>
