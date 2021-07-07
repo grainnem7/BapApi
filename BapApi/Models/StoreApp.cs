@@ -67,6 +67,11 @@ namespace BapApi.Models
         [Display(Name = "Date")]
         [Required(ErrorMessage = "Date is required")]
         public string   Date    { get; set; }
+
+        [Column("price")]
+        [Display(Name = "Price")]
+        [RegularExpression("^[0-9]*$")]
+        [Required(ErrorMessage = "Price should be a number")]
         public string   Price   { get; set; }
     }
 }
