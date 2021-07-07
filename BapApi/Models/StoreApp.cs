@@ -38,15 +38,22 @@ namespace BapApi.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessage = "ID is required")]
-        public int      Id      { get; set; }
+        public int Id { get; set; }
 
         [Column("name")]
         [Display(Name = "App Name")]
         [StringLength(100, MinimumLength = 3)]
         [Required(ErrorMessage = "Name must be between 3 and 100 characters")]
         public string Name { get; set; }
-        public string   Name    { get; set; }
+
+
+        [Column("rating")]
+        [Display(Name = "Rating")]
+        [StringLength(5)]
+        [RegularExpression("^[0-9]*$")]
         public double   Rating  { get; set; }
+
+
         public int      People  { get; set; }
         public string   Category{ get; set; }
         public string   Date    { get; set; }
