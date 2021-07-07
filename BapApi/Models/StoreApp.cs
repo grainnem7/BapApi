@@ -62,6 +62,10 @@ namespace BapApi.Models
         [Display(Name = "Category")]
         [Required(ErrorMessage = "Category is required")]
         public string   Category{ get; set; }
+
+        [Column("date")]
+        [Display(Name = "Date")]
+        [Required(ErrorMessage = "Date is required")]
         public string   Date    { get; set; }
         public string   Price   { get; set; }
     }
