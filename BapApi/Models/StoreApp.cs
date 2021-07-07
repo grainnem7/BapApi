@@ -31,11 +31,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 /// </summary>
 namespace BapApi.Models
 {
-     public class StoreApp
-    {
-    }
-
-
     public class StoreApp
     {
         public int      Id      { get; set; }
@@ -46,6 +41,4 @@ namespace BapApi.Models
         public string   Date    { get; set; }
         public string   Price   { get; set; }
     }
-
-  
 }
