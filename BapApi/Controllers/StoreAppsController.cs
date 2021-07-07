@@ -171,18 +171,22 @@ namespace BapApi.Controllers
             // .Trim to make sure that the search term string can take multiple words
             // .ToLower to make sure that the search term is not case sensitive
             var lowerCaseSearchTerm = SearchTerm.Trim().ToLower();
-            
+
+            // lambda expression will have a specific condition that when results to true will return the specific object (=>)
+            // creates temporary var to use as a comparison (a)
+            // temporary var will check the data to see whether the name or category contains the search term 'lowercasesearchterm'
+            // and if true will store it under search app
             var searchApp = await _context.StoreApps
                 .Where(a => a.Name.ToLower()
                 .Contains(lowerCaseSearchTerm) || a.Category.ToLower().Contains(lowerCaseSearchTerm)).ToListAsync();
-            
-            
+
+
+            // if there are no results display not found 
             if (searchApp == null)
             {
                 return NotFound();
             }
-
-
+            // if there are results display them
             return Ok(searchApp);
 
         }
