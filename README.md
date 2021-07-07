@@ -1,9 +1,15 @@
-# BapApiSqlite
+
+# BAP API
 ## Team 1
-* Gráinne Meyer
-* Caitlin O'Hara
-* Shannon McGuckin
-* Kelvin	Mbewe
+## Kelvin Mbewe,Gráinne Meyer,  Caitlin O'Hara, Shannon McGuckin
+#### Technologies Used
+####  C#, Microsoft.EntityFrameworkCore, Sqlite3 Database
+#### Get Started
+ - Clone: `https://github.com/grainnem7/BapApi.git`
+ - Unzip: `BapApi`
+ - Open : `BapApi.sln in Visual Studio 2019`
+ - JSON : `https://localhost:44308/api/StoreApps`
+
 ## Overview
 
 This is a simple Visual Studio API Project for the Belfast Met Microsoft Academy.
