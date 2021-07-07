@@ -80,13 +80,12 @@ namespace BapApi.Controllers
             _context = context;
         }
 
-        //[AllowAnonymous]
-        //[ProducesDefaultResponseType]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-
+        [AllowAnonymous]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<StoreApp>>> GetStoreApps()
          {
