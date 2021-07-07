@@ -97,9 +97,9 @@ namespace BapApi.Controllers
         /// The [ProducesDefaultResponseType] comes in handy for non-success (200) return codes.
         /// for example if a failure status code returns a model that describes the problem
         /// you can specify that the status code in that case produces the default response to 
-        /// to describe the errors collectively, not individually. �Default� means this response 
+        /// to describe the errors collectively, not individually. 'Default' means this response 
         /// is used for all HTTP codes that are not covered individually for the operation. for more
-        /// information see the linbk below for more indepth 
+        /// information see the links below 
         /// https://github.com/dotnet/AspNetCore.Docs/issues/10072
         /// https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/conventions?view=aspnetcore-5.0
         /// https://docs.microsoft.com/en-us/aspnet/core/web-api/action-return-types?view=aspnetcore-2.2
@@ -107,20 +107,21 @@ namespace BapApi.Controllers
         /// [2]  It takes time for a function to fetch data from an API thus  asynchronous programming 
         /// was devised to accommodate for the lag between when a function is called to when the value 
         /// of that function is returned because without asynchronous programming, apps would delay 
-        /// loading on a clients screens in such a way that 
+        /// loading on clients screens in such a way that 
         /// (a) a loading screen might appear: When a user signs in, waiting for all their user data 
         /// to be returned from the database. This is bad User Experience (UX), waiting for the data to 
         /// load at each new screen. 
         /// (b) Thus Asynchronous programming allows a user to go about his business in an application,
-        /// while processes run in the background, good UX.
+        /// while processes run in the background, thsi is good UX.
         /// https://www.webtrainingroom.com/aspnetmvc/async-task 
         /// https://stackoverflow.com/questions/25720977/return-list-from-async-await-method
         /// 
         /// [3]  The HttpGet() method gets all the data from the database using the StoreAppsController above,
-        /// since the controller is restricted to only be accessed admin privilages the AllowAnonymous 
+        /// since the controller is restricted to only be accessed by people with privilages the AllowAnonymous 
         /// authorization only allows a non admin user to get the data, but for everything else they need 
-        /// admin privilages. 
-        /// [3] The API calls are most often called by back-end code and you dont want to simply display the 
+        /// privilages/ or right credentials. 
+        /// 
+        /// [4] The API calls are most often called by back-end code and you dont want to simply display the 
         /// response from the API but instead we need to check the status code and parse the response to determine 
         /// if our action was successful, displaying data to the user as necessary. An error page is not helpful
         /// in this  situations as it will just bloats the response with HTML and makes client code difficult 
@@ -133,22 +134,20 @@ namespace BapApi.Controllers
         /// with enough information to fix their code. For more error handling in a web API see the following article
         /// https://www.devtrends.co.uk/blog/handling-errors-in-asp.net-core-web-api
         /// 
-        /// [4] Routing is very important to define in an API as its the path taken to reach the destination
-        /// Thus routing in a Web API is the mechanism to reach the destination. The destination is the exact 
-        /// action method which is to be invoked based on API's Request. For more information on web API routing 
-        /// see this link below 
+        /// [5] Routing is very important to define in an API as its the path taken to reach the destination
+        /// Thus routing in the API to reach its destination. see the following links
         /// https://dotnettutorials.net/lesson/routing-in-asp-net-core-web-api/
         /// https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
 
-        //[AllowAnonymous]
-        //[ProducesDefaultResponseType]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [AllowAnonymous]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("{id}")]
         
         public async Task<ActionResult<StoreApp>> GetStoreApp(int id)
