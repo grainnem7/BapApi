@@ -88,9 +88,9 @@ namespace BapApi.Controllers
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
 
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreApps()
+        public async Task<ActionResult<IEnumerable<StoreApp>>> GetStoreApps()
          {
-            return await _context.StoreApps.Select(x => StoreAppToDTO(x)).ToListAsync();
+            return await _context.StoreApps.Select(x => StoreApp(x)).ToListAsync();
          }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace BapApi.Controllers
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("{id}")]
         
-        public async Task<ActionResult<StoreAppDTO>> GetStoreApp(int id)
+        public async Task<ActionResult<StoreApp>> GetStoreApp(int id)
         {
             var storeApp = await _context.StoreApps.FindAsync(id);
 
@@ -161,11 +161,11 @@ namespace BapApi.Controllers
                 return NotFound();
             }
 
-            return StoreAppToDTO(storeApp);
+            return StoreApp(storeApp);
         }
        
         [HttpGet("Search")]
-        public async Task<ActionResult<StoreAppDTO>> GetSearchApp(string SearchTerm)
+        public async Task<ActionResult<StoreApp>> GetSearchApp(string SearchTerm)
         {
 
             // .Trim to make sure that the search term string can take multiple words
@@ -190,10 +190,10 @@ namespace BapApi.Controllers
        // GET: api/StoreApps/FirstTen
         // Get the first ten results from the database aftering ordering the data by Id
         [HttpGet("FirstTen")]
-        public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreTopTen()
+        public async Task<ActionResult<IEnumerable<StoreApp>>> GetStoreTopTen()
         {
 
-            var storeTopTen = await _context.StoreApps.Select(x => StoreAppToDTO(x)).Take(10).ToListAsync();
+            var storeTopTen = await _context.StoreApps.Select(x => StoreApp(x)).Take(10).ToListAsync();
 
             if (storeTopTen == null)
             {
@@ -209,7 +209,7 @@ namespace BapApi.Controllers
         /// <param name="storeApp"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<StoreAppDTO>> CreateApp(StoreAppDTO storeApp)
+        public async Task<ActionResult<StoreApp>> CreateApp(StoreApp storeApp)
         {
             var storeapp = new StoreApp
             {
@@ -229,7 +229,7 @@ namespace BapApi.Controllers
             return CreatedAtAction(
                 nameof(storeApp),
                 new { id = storeapp.Id },
-                StoreAppToDTO(storeapp));
+                StoreApp(storeapp));
         }
 
 
@@ -266,8 +266,9 @@ namespace BapApi.Controllers
         /// <returns></returns>
         /// 
 
-        private static StoreAppDTO StoreAppToDTO(StoreApp storeApp) =>
-            new StoreAppDTO
+
+        private static StoreApp StoreApp(StoreApp storeApp) =>
+            new StoreApp
             {
                 Id          = storeApp.Id,
                 Name        = storeApp.Name,

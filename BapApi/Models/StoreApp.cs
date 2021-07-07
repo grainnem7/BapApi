@@ -88,14 +88,14 @@ namespace BapApi.Models
     /// Data Transfer Object (DTO) to send secured data over the network.
     /// https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5
     /// </summary>
-    public class StoreAppDTO
-    {
-       public int    Id       { get; set; }
-       public string Name     { get; set; }
-       public double Rating   { get; set; }
-       public int    People   { get; set; }
-       public string Category { get; set; }
-       public string Date     { get; set; }
-       public string Price    { get; set; }
-    }
+    //public class StoreAppDTO
+    //{
+    //   public int    Id       { get; set; }
+    //   public string Name     { get; set; }
+    //   public double Rating   { get; set; }
+    //   public int    People   { get; set; }
+    //   public string Category { get; set; }
+    //   public string Date     { get; set; }
+    //   public string Price    { get; set; }
+    //}
 }
