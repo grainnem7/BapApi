@@ -190,7 +190,17 @@ namespace BapApi.Controllers
         }
 
         /// <summary>
-        /// create a post request, allows the user to input a new add that will be saved to the database 
+        /// [1] create a post request, allows the user to input a new add that 
+        /// will be saved to the database. 
+        /// 
+        /// In computing, POST is a request method supported by HTTP used by the
+        /// World Wide Web. The POST request method requests that a web server 
+        /// accepts the data enclosed in the body of the request message,
+        /// most likely for storing it. It is often used when uploading a file 
+        /// or when submitting a completed web form. See links below.
+        /// 
+        /// https://en.wikipedia.org/wiki/POST_(HTTP)
+        /// https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/search?view=aspnetcore-5.0
         /// </summary>
         /// <param name="storeApp"></param>
         /// <returns></returns>
