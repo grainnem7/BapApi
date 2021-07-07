@@ -217,15 +217,25 @@ namespace BapApi.Controllers
         /// https://entityframeworkcore.com/saving-data-savechangesasync
         /// 
         /// [4] Many languages, particularly scripting languages, have a loosely 
-        /// typed variable type named var. In these languages, var can 
+        /// typed variable type named var. In these languages can 
         /// hold any type of data. If you place a number into a var then
         /// it will be interpreted as a number whenever possible. If you 
         /// enter text it will be interpreted as a string, etc. ‘var’s 
         /// can even hold various objects and will behave properly.
+        /// 
+        /// One important point to remember is that in C# var is strongly typed. 
+        /// and once a var is declared it can only be of the type with which it 
+        /// was initialized. And a var must be initialized in order to be declared.
         /// https://intellitect.com/when-to-use-and-not-use-var-in-c/
         /// </summary>
         /// <param name="storeApp"></param>
         /// <returns></returns>
+        
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
         public async Task<ActionResult<StoreApp>> CreateApp(StoreApp storeApp)
         {
