@@ -33,6 +33,11 @@ namespace BapApi.Models
 {
     public class StoreApp
     {
+        [Column("id")]
+        [Display(Name = "App ID")]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required(ErrorMessage = "ID is required")]
         public int      Id      { get; set; }
         public string   Name    { get; set; }
         public double   Rating  { get; set; }
