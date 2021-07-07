@@ -179,14 +179,14 @@ namespace BapApi.Controllers
             var searchApp = await _context.StoreApps
                 .Where(a => a.Name.ToLower()
                 .Contains(lowerCaseSearchTerm) || a.Category.ToLower().Contains(lowerCaseSearchTerm)).ToListAsync();
-            
-            
+
+
+            // if there are no results display not found 
             if (searchApp == null)
             {
                 return NotFound();
             }
-
-
+            // if there are results display them
             return Ok(searchApp);
 
         }
