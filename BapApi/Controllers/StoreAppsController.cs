@@ -24,12 +24,12 @@ using Microsoft.AspNetCore.Authorization;
 /// [2] Also think of Code coverage as is a measure of the amount of code that is run by unit tests
 /// either lines, branches, or methods for example, if you have an application with two branches 
 /// of code (branch X, and branch Y) a unit test will verify that branch "X" has a code coverage 
-/// of 50%. see the following code for more information.
+/// of 50%. see the following link for more information.
 ///  https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=windows
 /// 
 /// Remember that Code coverage is an important measure that quantifies the degree of which your 
 /// code has been thoroughly tested. There are plenty of Code Coverage Tools on the market but 
-/// below I've listed tools with the most popular features and latest download links, checkout below link
+/// below I've listed tools with the most popular features and latest download links below
 /// https://blog.ndepend.com/guide-code-coverage-tools/
 ///
 /// [3] Automation testing for the API is equally important and should be given the same weight of 
@@ -37,7 +37,7 @@ using Microsoft.AspNetCore.Authorization;
 /// becoming important to developers, so its importantfor developers and programmers to automate their 
 /// API tests and know how to do it best. As it determs whether an API that has been developed meets 
 /// the anticipated threshold in terms of functionality, performance, reliability, and security. 
-/// Please look at the below link for your best automated API testing tools out there.
+/// Please look at the below link for your best automated API testing tools in 2021.
 /// https://rapidapi.com/blog/best-api-testing-tools/
 /// 
 /// [4] For performance reasons I've included the [ApiController] attribute to the controller class below 
@@ -69,7 +69,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace BapApi.Controllers 
 {
     //[Authorize(Roles = "admin")]
-   // [ApiConventionType(typeof(DefaultApiConventions))]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")]
     [ApiController]
     public class StoreAppsController : ControllerBase
