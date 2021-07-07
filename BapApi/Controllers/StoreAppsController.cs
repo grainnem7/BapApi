@@ -69,7 +69,6 @@ using Microsoft.AspNetCore.Authorization;
 namespace BapApi.Controllers 
 {
     //[Authorize(Roles = "admin")]
-    
    // [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")]
     [ApiController]
@@ -81,10 +80,6 @@ namespace BapApi.Controllers
             _context = context;
         }
 
-
-
-
-
         //[AllowAnonymous]
         //[ProducesDefaultResponseType]
         //[ProducesResponseType(StatusCodes.Status200OK)]
@@ -92,29 +87,11 @@ namespace BapApi.Controllers
         //[ProducesResponseType(StatusCodes.Status404NotFound)]
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-
-
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<StoreAppDTO>>> GetStoreApps()
          {
             return await _context.StoreApps.Select(x => StoreAppToDTO(x)).ToListAsync();
          }
-
-        //[HttpGet("Paged")]
-        //// Read the query string on the request page filter properties
-        //public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter)
-        //{
-        //    var route = Request.Path.Value;
-        //    var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
-        //    var pagedData = await _context.StoreApps
-        //        .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
-        //        .Take(validFilter.PageSize)
-        //        .ToListAsync();
-        //    var totalRecords = await _context.StoreApps.CountAsync();
-        //    var pagedReponse = PaginationHelper.CreatePagedReponse<StoreApp>(pagedData, validFilter, totalRecords, uriService, route);
-        //    return Ok(pagedReponse);
-        //}
-
 
         /// <summary>
         /// [1] The below HttpGet("{id}") only allows to Get a single row from the database by Id
@@ -187,8 +164,6 @@ namespace BapApi.Controllers
             return StoreAppToDTO(storeApp);
         }
        
-
-
         [HttpGet("Search")]
         public async Task<ActionResult<StoreAppDTO>> GetSearchApp(string SearchTerm)
         {
@@ -211,8 +186,6 @@ namespace BapApi.Controllers
             return Ok(searchApp);
 
         }
-
-  
 
        // GET: api/StoreApps/FirstTen
         // Get the first ten results from the database aftering ordering the data by Id
@@ -263,9 +236,6 @@ namespace BapApi.Controllers
         // POST: api/StoreApps
         // Add a new record to the database
 
-
-
-
         // Delete: api/StoreApps/1
         // Delete a single row from the database by Id
 
@@ -295,7 +265,6 @@ namespace BapApi.Controllers
         /// <param name="storeApp"></param>
         /// <returns></returns>
         /// 
-
 
         private static StoreAppDTO StoreAppToDTO(StoreApp storeApp) =>
             new StoreAppDTO

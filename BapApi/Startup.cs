@@ -51,21 +51,9 @@ namespace BapApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //services.AddDbContext<StoreAppsContext>(opt => opt.UseInMemoryDatabase("StoreApps"));
-            //  services.AddHttpContextAccessor();
             services.AddEntityFrameworkSqlite().AddDbContext<StoreAppsContext>();
             services.AddControllers();
         }
-            //    services.AddSingleton<IUriService>(o =>
-            //    {
-            //        var accessor = o.GetRequiredService<IHttpContextAccessor>();
-            //        var request = accessor.HttpContext.Request;
-            //        var uri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
-            //        return new UriService(uri);
-            //    });
-            //    services.AddEntityFrameworkSqlite().AddDbContext<StoreAppsContext>();
-            //    services.AddControllers();
-            //}
 
             /// <summary>
             /// [1] API Documentations softwaares are great but the This is a common problem with
