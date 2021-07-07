@@ -58,7 +58,9 @@ namespace BapApi.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int      People  { get; set; }
 
-
+        [Column("category")]
+        [Display(Name = "Category")]
+        [Required(ErrorMessage = "Category is required")]
         public string   Category{ get; set; }
         public string   Date    { get; set; }
         public string   Price   { get; set; }
