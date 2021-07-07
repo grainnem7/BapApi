@@ -191,22 +191,6 @@ namespace BapApi.Controllers
 
         }
 
-       // GET: api/StoreApps/FirstTen
-        // Get the first ten results from the database aftering ordering the data by Id
-        [HttpGet("FirstTen")]
-        public async Task<ActionResult<IEnumerable<StoreApp>>> GetStoreTopTen()
-        {
-
-            var storeTopTen = await _context.StoreApps.Select(x => StoreApp(x)).Take(10).ToListAsync();
-
-            if (storeTopTen == null)
-            {
-                return NotFound();
-            }
-            
-            return storeTopTen; 
-        }
-
         /// <summary>
         /// create a post request, allows the user to input a new add that will be saved to the database 
         /// </summary>
