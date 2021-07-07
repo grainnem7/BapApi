@@ -199,8 +199,22 @@ namespace BapApi.Controllers
         /// most likely for storing it. It is often used when uploading a file 
         /// or when submitting a completed web form. See links below.
         /// 
-        /// https://en.wikipedia.org/wiki/POST_(HTTP)
+        /// https://en.wikipedia.org/wiki/POST_(HTTP
         /// https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/search?view=aspnetcore-5.0
+        /// 
+        /// [2] SaveChangesAsync is Asynchronous saving that avoids blocking 
+        /// a thread while the changes are written to the database. This can be 
+        /// useful to avoid freezing the UI of a client application. The 
+        /// Entity Framework Core provides DbContext.SaveChangesAsync() 
+        /// as an asynchronous alternative to DbContext.SaveChanges().
+        /// 
+        /// [3] CreatedAtAction(String, Object, Object) Creates a 
+        /// CreatedAtActionResult object that produces a Status201Created response.
+        /// CreatedAtAction(String, String, Object, Object) Creates a 
+        /// CreatedAtActionResult object that produces a Status201Created response.
+        /// 
+        /// https://treehozz.com/what-is-createdataction
+        /// https://entityframeworkcore.com/saving-data-savechangesasync
         /// </summary>
         /// <param name="storeApp"></param>
         /// <returns></returns>
@@ -210,13 +224,13 @@ namespace BapApi.Controllers
             var storeapp = new StoreApp
             {
                 
-                Id = storeApp.Id,
-                Name = storeApp.Name,
-                Rating = storeApp.Rating,
-                People = storeApp.People,
-                Category = storeApp.Category,
-                Date = storeApp.Date,
-                Price = storeApp.Price
+                Id          = storeApp.Id,
+                Name        = storeApp.Name,
+                Rating      = storeApp.Rating,
+                People      = storeApp.People,
+                Category    = storeApp.Category,
+                Date        = storeApp.Date,
+                Price       = storeApp.Price
             };
 
             _context.StoreApps.Add(storeapp);
@@ -227,13 +241,6 @@ namespace BapApi.Controllers
                 new { id = storeapp.Id },
                 StoreApp(storeapp));
         }
-
-
-        // POST: api/StoreApps
-        // Add a new record to the database
-
-        // Delete: api/StoreApps/1
-        // Delete a single row from the database by Id
 
         /// <summary>
         /// [1] Right now our web API exposes the database entities to the client. 
@@ -257,6 +264,7 @@ namespace BapApi.Controllers
         /// over the wire. Forr more information look up the following links
         /// https://en.wikipedia.org/wiki/Data_transfer_object
         /// https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5
+        /// https://www.codeproject.com/articles/1050468/data-transfer-object-design-pattern-in-csharp
         /// </summary>
         /// <param name="storeApp"></param>
         /// <returns></returns>
