@@ -227,6 +227,11 @@ namespace BapApi.Controllers
         /// and once a var is declared it can only be of the type with which it 
         /// was initialized. And a var must be initialized in order to be declared.
         /// https://intellitect.com/when-to-use-and-not-use-var-in-c/
+        /// 
+        /// [ProducesDefaultResponseType]
+        /// [5] is for describing what the content will be for any responses 
+        /// that aren't specified by other ProducesResponseType attributes. 
+        /// https://github.com/dotnet/AspNetCore.Docs/issues/10072
         /// </summary>
         /// <param name="storeApp"></param>
         /// <returns></returns>
